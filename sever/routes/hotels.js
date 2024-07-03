@@ -7,19 +7,19 @@ import { updateHotel } from '../controllers/hotel.js';
 import { deleteHotel } from '../controllers/hotel.js';
 import { getHotelBYId } from '../controllers/hotel.js';
 import { getAllHotels } from '../controllers/hotel.js';
-
+import {verifyAdmin} from '../utils/verifyToken.js'
 const router = express.Router();
 
 // create new hotel
-router.post('/',createHotel);
+router.post('/',verifyAdmin,createHotel);
 
 // edit or update the hotel info
 
-router.put('/:id',updateHotel);
+router.put('/:id',verifyAdmin,updateHotel);
 
 // dellete one hotel
 
-router.delete('/:id',deleteHotel);
+router.delete('/:id',verifyAdmin,deleteHotel);
 
 // get one hotel by id
 
